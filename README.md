@@ -1,2 +1,2 @@
 # optfor
-Extract the designated parameter.
+Extract the designated element.

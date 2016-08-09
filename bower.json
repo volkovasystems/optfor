@@ -1,0 +1,26 @@
+{
+  "name": "optfor",
+  "description": "Extract the designated element.",
+  "main": "optfor.js",
+  "authors": [
+    "Richeve S. Bebedor <richeve.bebedor@gmail.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "extract",
+    "designated",
+    "element",
+    "optfor"
+  ],
+  "homepage": "https://github.com/volkovasystems/optfor",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "raze": "^0.0.5"
+  }
+}

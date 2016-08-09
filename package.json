@@ -1,0 +1,28 @@
+{
+  "name": "optfor",
+  "version": "0.0.0",
+  "description": "Extract the designated element.",
+  "main": "optfor.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/volkovasystems/optfor.git"
+  },
+  "keywords": [
+    "extract",
+    "designated",
+    "element",
+    "optfor"
+  ],
+  "author": "Richeve S. Bebedor <richeve.bebedor@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/volkovasystems/optfor/issues"
+  },
+  "homepage": "https://github.com/volkovasystems/optfor#readme",
+  "dependencies": {
+    "raze": "0.0.5"
+  }
+}
