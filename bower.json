@@ -1,5 +1,6 @@
 {
   "name": "optfor",
+  "version": "0.0.0",
   "description": "Extract the designated element.",
   "main": "optfor.js",
   "authors": [
