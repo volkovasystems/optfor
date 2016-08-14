@@ -47,13 +47,23 @@
 
 	@include:
 		{
-			"raze": "raze"
+			"harden": "harden",
+			"raze": "raze",
+			"zelf": "zelf"
 		}
 	@end-include
 */
 
 if( typeof window == "undefined" ){
+	var harden = require( "harden" );
 	var raze = require( "raze" );
+	var zelf = require( "zelf" );
+}
+
+if( typeof window != "undefined" &&
+	!( "harden" in window ) )
+{
+	throw new Error( "harden is not defined" );
 }
 
 if( typeof window != "undefined" &&
@@ -61,6 +71,19 @@ if( typeof window != "undefined" &&
 {
 	throw new Error( "raze is not defined" );
 }
+
+if( typeof window != "undefined" &&
+	!( "zelf" in window ) )
+{
+	throw new Error( "zelf is not defined" );
+}
+
+harden( "BOOLEAN", "boolean" );
+harden( "FUNCTION", "function" );
+harden( "NUMBER", "number" );
+harden( "OBJECT", "object" );
+harden( "STRING", "string" );
+harden( "UNDEFINED", "undefined" );
 
 var optfor = function optfor( list, condition ){
 	/*;
@@ -78,24 +101,37 @@ var optfor = function optfor( list, condition ){
 		@end-meta-configuration
 	*/
 
-	if( typeof condition != "string" &&
-		typeof condition != "function" )
+	if( typeof condition != STRING &&
+		typeof condition != FUNCTION )
 	{
 		throw new Error( "invalid condition" );
 	}
 
+	if( typeof condition == STRING &&
+		condition != BOOLEAN &&
+		condition != FUNCTION &&
+		condition != NUMBER &&
+		condition != OBJECT &&
+		condition != STRING &&
+		condition != UNDEFINED )
+	{
+		throw new Error( "invalid type condition" );
+	}
+
+	var self = zelf( this );
+
 	return raze( list )
-		.filter( function onEachElement( element ){
-			if( typeof condition == "string" ){
+		.filter( function onEachElement( element, index ){
+			if( typeof condition == STRING ){
 				return ( typeof element == condition );
 
-			}else if( typeof condition == "function" &&
+			}else if( typeof condition == FUNCTION &&
 				( /^[A-Z]/ ).test( condition.name ) )
 			{
 				return ( element instanceof condition );
 
 			}else{
-				return condition( element );
+				return condition.bind( self )( element, index );
 			}
 		} )[ 0 ];
 };

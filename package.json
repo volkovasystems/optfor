@@ -1,6 +1,6 @@
 {
   "name": "optfor",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Extract the designated element.",
   "main": "optfor.js",
   "scripts": {
@@ -23,6 +23,8 @@
   },
   "homepage": "https://github.com/volkovasystems/optfor#readme",
   "dependencies": {
-    "raze": "0.0.5"
+    "harden": "^0.3.2",
+    "raze": "0.0.5",
+    "zelf": "0.0.0"
   }
 }
