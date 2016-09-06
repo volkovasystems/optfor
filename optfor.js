@@ -1,5 +1,3 @@
-"use strict";
-
 /*;
 	@module-license:
 		The MIT License (MIT)
@@ -85,18 +83,19 @@ harden( "OBJECT", "object" );
 harden( "STRING", "string" );
 harden( "UNDEFINED", "undefined" );
 
-var optfor = function optfor( list, condition ){
+var optfor = function optfor( list, condition, modifier ){
 	/*;
 		@meta-configuration:
 			{
 				"list:required": [
-					"arguments",
+					"Arguments",
 					"[*]"
 				],
 				"condition:required": [
 					"string",
 					"function"
-				]
+				],
+				"modifier": "function"
 			}
 		@end-meta-configuration
 	*/
@@ -120,7 +119,7 @@ var optfor = function optfor( list, condition ){
 
 	var self = zelf( this );
 
-	return raze( list )
+	var element = raze( list )
 		.filter( function onEachElement( element, index ){
 			if( typeof condition == STRING ){
 				return ( typeof element == condition );
@@ -134,6 +133,21 @@ var optfor = function optfor( list, condition ){
 				return condition.bind( self )( element, index );
 			}
 		} )[ 0 ];
+
+	if( typeof modifier == FUNCTION ){
+		return modifier( element );
+
+	}else if( typeof modifier != UNDEFINED ){
+		if( element !== modifier ){
+			return modifier;
+
+		}else{
+			return element;
+		}
+
+	}else{
+		return element;
+	}
 };
 
 if( typeof module != "undefined" ){
