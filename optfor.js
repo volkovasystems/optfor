@@ -52,27 +52,26 @@
 	@end-include
 */
 
-if( typeof window == "undefined" ){
+if( typeof require == "function" ){
 	var harden = require( "harden" );
+	var protype = require( "protype" );
 	var raze = require( "raze" );
 	var zelf = require( "zelf" );
 }
 
-if( typeof window != "undefined" &&
-	!( "harden" in window ) )
-{
+if( typeof window != "undefined" && !( "harden" in window ) ){
 	throw new Error( "harden is not defined" );
 }
 
-if( typeof window != "undefined" &&
-	!( "raze" in window ) )
-{
+if( typeof window != "undefined" && !( "protype" in window ) ){
+	throw new Error( "protype is not defined" );
+}
+
+if( typeof window != "undefined" && !( "raze" in window ) ){
 	throw new Error( "raze is not defined" );
 }
 
-if( typeof window != "undefined" &&
-	!( "zelf" in window ) )
-{
+if( typeof window != "undefined" && !( "zelf" in window ) ){
 	throw new Error( "zelf is not defined" );
 }
 
@@ -82,6 +81,7 @@ harden( "NUMBER", "number" );
 harden( "OBJECT", "object" );
 harden( "STRING", "string" );
 harden( "UNDEFINED", "undefined" );
+harden( "SYMBOL", "symbol" );
 
 var optfor = function optfor( list, condition, modifier ){
 	/*;
@@ -95,38 +95,38 @@ var optfor = function optfor( list, condition, modifier ){
 					"string",
 					"function"
 				],
-				"modifier": "function"
+				"modifier": [
+					"function",
+					"*"
+				]
 			}
 		@end-meta-configuration
 	*/
 
-	if( typeof condition != STRING &&
-		typeof condition != FUNCTION )
+	let conditionType = protype( condition );
+	if( ( !conditionType.STRING &&
+			!conditionType.FUNCTION ) ||
+
+		( conditionType.STRING &&
+			condition != BOOLEAN &&
+			condition != FUNCTION &&
+			condition != NUMBER &&
+			condition != OBJECT &&
+			condition != STRING &&
+			condition != UNDEFINED &&
+			condition != SYMBOL ) )
 	{
 		throw new Error( "invalid condition" );
 	}
 
-	if( typeof condition == STRING &&
-		condition != BOOLEAN &&
-		condition != FUNCTION &&
-		condition != NUMBER &&
-		condition != OBJECT &&
-		condition != STRING &&
-		condition != UNDEFINED )
-	{
-		throw new Error( "invalid type condition" );
-	}
+	let self = zelf( this );
 
-	var self = zelf( this );
-
-	var element = raze( list )
+	let element = raze( list )
 		.filter( function onEachElement( element, index ){
-			if( typeof condition == STRING ){
-				return ( typeof element == condition );
+			if( conditionType.STRING ){
+				return protype( element, condition );
 
-			}else if( typeof condition == FUNCTION &&
-				( /^[A-Z]/ ).test( condition.name ) )
-			{
+			}else if( conditionType.FUNCTION && ( /^[A-Z]/ ).test( condition.name ) ){
 				return ( element instanceof condition );
 
 			}else{
@@ -134,22 +134,18 @@ var optfor = function optfor( list, condition, modifier ){
 			}
 		} )[ 0 ];
 
-	if( typeof modifier == FUNCTION ){
-		return modifier( element );
+	let modifierType = protype( modifier );
+	if( modifierType.FUNCTION ){
+		return modifier.bind( self )( element );
 
-	}else if( typeof modifier != UNDEFINED ){
-		if( element !== modifier ){
-			return modifier;
-
-		}else{
-			return element;
-		}
+	}else if( !modifierType.UNDEFINED && element !== modifier ){
+		return modifier;
 
 	}else{
 		return element;
 	}
 };
 
-if( typeof module != "undefined" ){
+if( typeof module != "undefined" && typeof module.exports != "undefined" ){
 	module.exports = optfor;
 }
