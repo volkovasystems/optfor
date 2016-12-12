@@ -40,40 +40,29 @@
 	@end-module-configuration
 
 	@module-documentation:
-		Pick the element that satisfy the condition.
+		Pick the element that satisfy the condition with modifier.
+
+		Modifier can be a boolean flag or a function.
 	@end-module-documentation
 
 	@include:
 		{
+			"doubt": "doubt",
+			"falze": "falze",
 			"harden": "harden",
-			"raze": "raze",
+			"optall": "optall",
+			"protype": "protype",
 			"zelf": "zelf"
 		}
 	@end-include
 */
 
-if( typeof require == "function" ){
-	var harden = require( "harden" );
-	var protype = require( "protype" );
-	var raze = require( "raze" );
-	var zelf = require( "zelf" );
-}
-
-if( typeof window != "undefined" && !( "harden" in window ) ){
-	throw new Error( "harden is not defined" );
-}
-
-if( typeof window != "undefined" && !( "protype" in window ) ){
-	throw new Error( "protype is not defined" );
-}
-
-if( typeof window != "undefined" && !( "raze" in window ) ){
-	throw new Error( "raze is not defined" );
-}
-
-if( typeof window != "undefined" && !( "zelf" in window ) ){
-	throw new Error( "zelf is not defined" );
-}
+const doubt = require( "doubt" );
+const falze = require( "falze" );
+const harden = require( "harden" );
+const optall = require( "optall" );
+const protype = require( "protype" );
+const zelf = require( "zelf" );
 
 harden( "BOOLEAN", "boolean" );
 harden( "FUNCTION", "function" );
@@ -83,7 +72,7 @@ harden( "STRING", "string" );
 harden( "UNDEFINED", "undefined" );
 harden( "SYMBOL", "symbol" );
 
-var optfor = function optfor( list, condition, modifier ){
+const optfor = function optfor( list, condition, modifier ){
 	/*;
 		@meta-configuration:
 			{
@@ -93,59 +82,43 @@ var optfor = function optfor( list, condition, modifier ){
 				],
 				"condition:required": [
 					"string",
-					"function"
+					"function",
+					BOOLEAN,
+					FUNCTION,
+					NUMBER,
+					OBJECT,
+					STRING,
+					UNDEFINED,
+					SYMBOL,
+					"[string, function]"
 				],
 				"modifier": [
 					"function",
-					"*"
+					"boolean"
 				]
 			}
 		@end-meta-configuration
 	*/
 
-	let conditionType = protype( condition );
-	if( ( !conditionType.STRING &&
-			!conditionType.FUNCTION ) ||
+	if( !doubt( list, AS_ARRAY ) ){
+		throw new Error( "invalid list" );
+	}
 
-		( conditionType.STRING &&
-			condition != BOOLEAN &&
-			condition != FUNCTION &&
-			condition != NUMBER &&
-			condition != OBJECT &&
-			condition != STRING &&
-			condition != UNDEFINED &&
-			condition != SYMBOL ) )
-	{
+	if( falze( condition ) ){
 		throw new Error( "invalid condition" );
 	}
 
 	let self = zelf( this );
 
-	let element = raze( list )
-		.filter( function onEachElement( element, index ){
-			if( conditionType.STRING ){
-				return protype( element, condition );
-
-			}else if( conditionType.FUNCTION && ( /^[A-Z]/ ).test( condition.name ) ){
-				return ( element instanceof condition );
-
-			}else{
-				return condition.bind( self )( element, index );
-			}
-		} )[ 0 ];
+	let element = optall.bind( self )( list, condition, modifier )[ 0 ];
 
 	let modifierType = protype( modifier );
 	if( modifierType.FUNCTION ){
 		return modifier.bind( self )( element );
-
-	}else if( !modifierType.UNDEFINED && element !== modifier ){
-		return modifier;
 
 	}else{
 		return element;
 	}
 };
 
-if( typeof module != "undefined" && typeof module.exports != "undefined" ){
-	module.exports = optfor;
-}
+module.exports = optfor;
