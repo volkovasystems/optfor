@@ -1,6 +1,6 @@
 {
   "name": "optfor",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Extract the designated element.",
   "main": "optfor.js",
   "scripts": {
@@ -26,7 +26,7 @@
     "doubt": "^0.4.0",
     "falze": "^0.2.0",
     "harden": "^0.9.0",
-    "optall": "^0.1.0",
+    "optall": "^0.2.0",
     "protype": "^0.4.0",
     "zelf": "^0.3.0"
   }
