@@ -1,3 +1,5 @@
+"use strict";
+
 /*;
 	@module-license:
 		The MIT License (MIT)
@@ -60,66 +62,65 @@
 	@end-include
 */
 
-const doubt = require( "doubt" );
-const falze = require( "falze" );
-const harden = require( "harden" );
-const optall = require( "optall" );
-const protype = require( "protype" );
-const zelf = require( "zelf" );
+var doubt = require("doubt");
+var falze = require("falze");
+var harden = require("harden");
+var optall = require("optall");
+var protype = require("protype");
+var zelf = require("zelf");
 
-harden( "BOOLEAN", "boolean" );
-harden( "FUNCTION", "function" );
-harden( "NUMBER", "number" );
-harden( "OBJECT", "object" );
-harden( "STRING", "string" );
-harden( "UNDEFINED", "undefined" );
-harden( "SYMBOL", "symbol" );
+harden("BOOLEAN", "boolean");
+harden("FUNCTION", "function");
+harden("NUMBER", "number");
+harden("OBJECT", "object");
+harden("STRING", "string");
+harden("UNDEFINED", "undefined");
+harden("SYMBOL", "symbol");
 
-const optfor = function optfor( list, condition, modifier ){
+var optfor = function optfor(list, condition, modifier) {
 	/*;
-		@meta-configuration:
-			{
-				"list:required": [
-					"Arguments",
-					"[*]"
-				],
-				"condition:required": [
-					"string",
-					"function",
-					BOOLEAN,
-					FUNCTION,
-					NUMBER,
-					OBJECT,
-					STRING,
-					UNDEFINED,
-					SYMBOL,
-					"[string, function]"
-				],
-				"modifier": [
-					"function",
-					"boolean"
-				]
-			}
-		@end-meta-configuration
-	*/
+ 	@meta-configuration:
+ 		{
+ 			"list:required": [
+ 				"Arguments",
+ 				"[*]"
+ 			],
+ 			"condition:required": [
+ 				"string",
+ 				"function",
+ 				BOOLEAN,
+ 				FUNCTION,
+ 				NUMBER,
+ 				OBJECT,
+ 				STRING,
+ 				UNDEFINED,
+ 				SYMBOL,
+ 				"[string, function]"
+ 			],
+ 			"modifier": [
+ 				"function",
+ 				"boolean"
+ 			]
+ 		}
+ 	@end-meta-configuration
+ */
 
-	if( !doubt( list, AS_ARRAY ) ){
-		throw new Error( "invalid list" );
+	if (!doubt(list, AS_ARRAY)) {
+		throw new Error("invalid list");
 	}
 
-	if( falze( condition ) ){
-		throw new Error( "invalid condition" );
+	if (falze(condition)) {
+		throw new Error("invalid condition");
 	}
 
-	let self = zelf( this );
+	var self = zelf(this);
 
-	let element = optall.bind( self )( list, condition, modifier )[ 0 ];
+	var element = optall.bind(self)(list, condition, modifier)[0];
 
-	let modifierType = protype( modifier );
-	if( modifierType.FUNCTION ){
-		return modifier.bind( self )( element );
-
-	}else{
+	var modifierType = protype(modifier);
+	if (modifierType.FUNCTION) {
+		return modifier.bind(self)(element);
+	} else {
 		return element;
 	}
 };
