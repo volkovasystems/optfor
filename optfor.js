@@ -115,8 +115,7 @@ const optfor = function optfor( list, condition, modifier ){
 
 	let element = optall.bind( self )( list, condition, modifier )[ 0 ];
 
-	let modifierType = protype( modifier );
-	if( modifierType.FUNCTION ){
+	if( protype( modifier, FUNCTION ) ){
 		return modifier.bind( self )( element );
 
 	}else{
