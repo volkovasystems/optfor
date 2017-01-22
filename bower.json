@@ -1,6 +1,6 @@
 {
   "name": "optfor",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "description": "Extract the designated element.",
   "main": "optfor.js",
   "support": "optfor.support.js",
