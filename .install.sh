@@ -22,4 +22,5 @@ harden \
 optall \
 protype \
 zelf \
---save
+--save \
+--force-latest
