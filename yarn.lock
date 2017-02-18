@@ -1050,6 +1050,18 @@ doubt@^0.16.0:
     kount "^0.9.0"
     protype "^0.17.0"
 
+doubt@^0.17.0:
+  version "0.17.0"
+  resolved "https://registry.yarnpkg.com/doubt/-/doubt-0.17.0.tgz#9817bd2afa0b10f7d913ea562fbaffd4a0d7de75"
+  dependencies:
+    babel-runtime "^6.23.0"
+    cemento "^0.11.0"
+    circular-json "^0.3.1"
+    falzy "^0.13.0"
+    harden "^0.16.0"
+    khount "^0.0.0"
+    protype "^0.17.0"
+
 ecc-jsbn@~0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/ecc-jsbn/-/ecc-jsbn-0.1.1.tgz#0fc73a9ed5f0d53c38193398523ef7e543777505"
@@ -1608,6 +1620,12 @@ kein@^0.10.0:
     babel-runtime "^6.23.0"
     falzy "^0.13.0"
     protype "^0.17.0"
+
+khount@^0.0.0:
+  version "0.0.0"
+  resolved "https://registry.yarnpkg.com/khount/-/khount-0.0.0.tgz#7c7f369ae5d0ef5499dca14eeb168bb4b4b29e6d"
+  dependencies:
+    babel-runtime "^6.23.0"
 
 kind-of@^3.0.2:
   version "3.1.0"

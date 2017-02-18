@@ -1,13 +1,13 @@
 {
   "name": "optfor",
-  "version": "0.12.0",
+  "version": "0.13.0",
   "description": "Extract the designated element.",
   "main": "optfor.js",
   "support": "optfor.support.js",
   "deploy": "optfor.deploy.js",
   "browser": "optfor.deploy.js",
   "scripts": {
-    "build": "babel optfor.js --out-file optfor.support.js --source-maps && webpack --progress",
+    "build": "babel optfor.js --out-file optfor.support.js --source-maps && webpack --progress --display-modules",
     "test": "mocha optfor-test.js"
   },
   "repository": {
@@ -31,7 +31,7 @@
   "homepage": "https://github.com/volkovasystems/optfor#readme",
   "dependencies": {
     "babel-runtime": "^6.23.0",
-    "doubt": "^0.16.0",
+    "doubt": "^0.17.0",
     "falze": "^0.10.0",
     "harden": "^0.16.0",
     "optall": "^0.8.0",
