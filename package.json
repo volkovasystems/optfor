@@ -1,6 +1,6 @@
 {
   "name": "optfor",
-  "version": "0.14.0",
+  "version": "0.15.0",
   "description": "Extract the designated element.",
   "main": "optfor.js",
   "support": "optfor.support.js",
@@ -32,9 +32,9 @@
   "dependencies": {
     "babel-runtime": "^6.23.0",
     "doubt": "^0.17.0",
-    "falze": "^0.10.0",
+    "falze": "^0.11.0",
     "harden": "^0.16.0",
-    "optall": "^0.9.0",
+    "optall": "^0.10.0",
     "protype": "^0.17.0",
     "zelf": "^0.8.0"
   },
