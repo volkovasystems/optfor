@@ -52,7 +52,6 @@
               		{
               			"doubt": "doubt",
               			"falze": "falze",
-              			"harden": "harden",
               			"optall": "optall",
               			"protype": "protype",
               			"zelf": "zelf"
@@ -62,18 +61,9 @@
 
 var doubt = require("doubt");
 var falze = require("falze");
-var harden = require("harden");
 var optall = require("optall");
 var protype = require("protype");
 var zelf = require("zelf");
-
-harden("BOOLEAN", "boolean");
-harden("FUNCTION", "function");
-harden("NUMBER", "number");
-harden("OBJECT", "object");
-harden("STRING", "string");
-harden("UNDEFINED", "undefined");
-harden("SYMBOL", "symbol");
 
 var optfor = function optfor(list, condition, modifier) {
 	/*;
