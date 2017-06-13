@@ -1,6 +1,6 @@
 {
   "name": "optfor",
-  "version": "0.28.0",
+  "version": "0.29.0",
   "description": "Extract the designated element.",
   "main": "optfor.js",
   "support": "optfor.support.js",
@@ -31,15 +31,15 @@
   "homepage": "https://github.com/volkovasystems/optfor#readme",
   "dependencies": {
     "babel-runtime": "^6.23.0",
-    "doubt": "^0.26.0",
-    "falze": "^0.22.0",
-    "optall": "^0.23.0",
-    "protype": "^0.21.0",
-    "zelf": "^0.11.0"
+    "doubt": "^0.27.0",
+    "falze": "^0.23.0",
+    "optall": "^0.24.0",
+    "protype": "^0.22.0",
+    "zelf": "^0.12.0"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
-    "babel-core": "^6.24.1",
+    "babel-core": "^6.25.0",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-latest": "^6.24.1",
     "source-map-loader": "^0.2.1",
