@@ -1,8 +1,32 @@
+<!DOCTYPE html>
 <html>
 	<head>
-		<script
-			type="application/javascript"
-			src="./optfor.deploy.js">
-		</script>
+		<title>optfor unit test</title>
+
+		<link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.3.2.css">
+
+		<script type="application/javascript" src="https://code.jquery.com/qunit/qunit-2.3.2.js"></script>
+
+		<script type="application/javascript" src="./optfor.deploy.js"></script>
 	</head>
+
+	<body>
+		<div id="qunit"></div>
+
+		<div id="qunit-fixture"></div>
+
+		<script type="application/javascript">
+			QUnit.test( "optfor unit test", function( assert ) {
+
+				assert.equal( optfor( [ 1, 2, 3 ], 2, true ), 2, "should return 2" );
+
+				assert.equal( optfor( [ 1, 2, 3, "hello" ], "hello" ), "hello", "should return 2" );
+
+				assert.equal( optfor( [ 1, 2, 3, true ], true ), true, "should return true" );
+
+				assert.equal( optfor( [ 1, 2, 3, Symbol.for( "hello" ) ] , SYMBOL ), Symbol.for( "hello" ), "should be equal" );
+				
+			} );
+		</script>
+	</body>
 </html>
