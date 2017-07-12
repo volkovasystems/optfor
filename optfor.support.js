@@ -53,7 +53,6 @@
               		{
               			"doubt": "doubt",
               			"optall": "optall",
-              			"protype": "protype",
               			"zelf": "zelf"
               		}
               	@end-include
@@ -61,7 +60,6 @@
 
 var doubt = require("doubt");
 var optall = require("optall");
-var protype = require("protype");
 var zelf = require("zelf");
 
 var optfor = function optfor(list, condition, modifier) {
@@ -100,7 +98,7 @@ var optfor = function optfor(list, condition, modifier) {
 
 	var element = optall.bind(self)(list, condition, modifier)[0];
 
-	if (protype(modifier, FUNCTION)) {
+	if (typeof modifier == "function") {
 		return modifier.bind(self)(element);
 
 	} else {

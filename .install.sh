@@ -2,7 +2,6 @@ yarn add \
 babel-runtime \
 doubt \
 optall \
-protype \
 zelf \
 --save && \
 yarn add \
@@ -16,7 +15,6 @@ webpack \
 bower install \
 doubt \
 optall \
-protype \
 zelf \
 --save \
 --force-latest
