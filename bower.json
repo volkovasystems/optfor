@@ -1,32 +1,27 @@
 {
-  "name": "optfor",
-  "version": "0.33.0",
-  "description": "Extract the designated element.",
-  "main": "optfor.deploy.js",
-  "support": "optfor.support.js",
-  "authors": [
-    "Richeve S. Bebedor <richeve.bebedor@gmail.com>",
-    "John Lenon Maghanoy <johnlenonmaghanoy@gmail.com>",
-    "Vinse Vinalon <vinsevinalon@gmail.com>"
-  ],
-  "license": "MIT",
-  "keywords": [
-    "extract",
-    "designated",
-    "element",
-    "optfor"
-  ],
-  "homepage": "https://github.com/volkovasystems/optfor",
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
-  ],
-  "dependencies": {
-    "doubt": "^0.34.0",
-    "optall": "^0.28.0",
-    "zelf": "^0.14.0"
-  }
+	"name": "optfor",
+	"version": "0.33.0",
+	"description": "Extract the designated element.",
+	"main": "optfor.deploy.js",
+	"support": "optfor.support.js",
+	"authors": [
+		"Richeve S. Bebedor <richeve.bebedor@gmail.com>",
+		"John Lenon Maghanoy <johnlenonmaghanoy@gmail.com>",
+		"Vinse Vinalon <vinsevinalon@gmail.com>"
+	],
+	"license": "MIT",
+	"keywords": [
+		"extract",
+		"designated",
+		"element",
+		"optfor"
+	],
+	"homepage": "https://github.com/volkovasystems/optfor",
+	"ignore": [
+		"**/.*",
+		"node_modules",
+		"bower_components",
+		"test",
+		"tests"
+	]
 }
