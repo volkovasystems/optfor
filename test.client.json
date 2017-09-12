@@ -1,0 +1,276 @@
+{
+	"state": {
+		"passed": 7,
+		"failed": 0,
+		"skipped": 0
+	},
+	"start": "2017-09-12T08:34:39.907Z",
+	"end": "2017-09-12T08:35:14.845Z",
+	"capabilities": {
+		"browserName": "chrome",
+		"chromeOptions": {
+			"args": [
+				"disable-gpu",
+				"headless"
+			]
+		},
+		"proxy": null
+	},
+	"host": "127.0.0.1",
+	"port": 4444,
+	"baseUrl": "http://localhost",
+	"framework": "mocha",
+	"mochaOpts": {
+		"timeout": 10000,
+		"ui": "bdd"
+	},
+	"suites": [
+		{
+			"name": "optfor",
+			"duration": 0,
+			"start": "2017-09-12T08:35:14.145Z",
+			"tests": [],
+			"hooks": []
+		},
+		{
+			"name": "optfor",
+			"duration": 523,
+			"start": "2017-09-12T08:35:14.145Z",
+			"end": "2017-09-12T08:35:14.668Z",
+			"tests": [],
+			"hooks": [
+				{
+					"start": "2017-09-12T08:35:14.148Z",
+					"end": "2017-09-12T08:35:14.149Z",
+					"duration": 1,
+					"title": "\"before each\" hook",
+					"associatedSuite": "optfor",
+					"associatedTest": "should be equal to 2"
+				},
+				{
+					"start": "2017-09-12T08:35:14.288Z",
+					"end": "2017-09-12T08:35:14.289Z",
+					"duration": 1,
+					"title": "\"after each\" hook",
+					"associatedSuite": "optfor",
+					"associatedTest": "should be equal to 2"
+				},
+				{
+					"start": "2017-09-12T08:35:14.290Z",
+					"end": "2017-09-12T08:35:14.291Z",
+					"duration": 1,
+					"title": "\"before each\" hook",
+					"associatedSuite": "optfor",
+					"associatedTest": "should be equal to 'hello'"
+				},
+				{
+					"start": "2017-09-12T08:35:14.362Z",
+					"end": "2017-09-12T08:35:14.362Z",
+					"duration": 0,
+					"title": "\"after each\" hook",
+					"associatedSuite": "optfor",
+					"associatedTest": "should be equal to 'hello'"
+				},
+				{
+					"start": "2017-09-12T08:35:14.362Z",
+					"end": "2017-09-12T08:35:14.363Z",
+					"duration": 1,
+					"title": "\"before each\" hook",
+					"associatedSuite": "optfor",
+					"associatedTest": "should be equal to true"
+				},
+				{
+					"start": "2017-09-12T08:35:14.413Z",
+					"end": "2017-09-12T08:35:14.414Z",
+					"duration": 1,
+					"title": "\"after each\" hook",
+					"associatedSuite": "optfor",
+					"associatedTest": "should be equal to true"
+				},
+				{
+					"start": "2017-09-12T08:35:14.414Z",
+					"end": "2017-09-12T08:35:14.415Z",
+					"duration": 1,
+					"title": "\"before each\" hook",
+					"associatedSuite": "optfor",
+					"associatedTest": "should be equal to Symbol.for( 'hello' )"
+				},
+				{
+					"start": "2017-09-12T08:35:14.470Z",
+					"end": "2017-09-12T08:35:14.470Z",
+					"duration": 0,
+					"title": "\"after each\" hook",
+					"associatedSuite": "optfor",
+					"associatedTest": "should be equal to Symbol.for( 'hello' )"
+				},
+				{
+					"start": "2017-09-12T08:35:14.470Z",
+					"end": "2017-09-12T08:35:14.470Z",
+					"duration": 0,
+					"title": "\"before each\" hook",
+					"associatedSuite": "optfor",
+					"associatedTest": "should be equal to /eah/"
+				},
+				{
+					"start": "2017-09-12T08:35:14.536Z",
+					"end": "2017-09-12T08:35:14.536Z",
+					"duration": 0,
+					"title": "\"after each\" hook",
+					"associatedSuite": "optfor",
+					"associatedTest": "should be equal to /eah/"
+				},
+				{
+					"start": "2017-09-12T08:35:14.537Z",
+					"end": "2017-09-12T08:35:14.537Z",
+					"duration": 0,
+					"title": "\"before each\" hook",
+					"associatedSuite": "optfor",
+					"associatedTest": "should be equal to 'hello'"
+				},
+				{
+					"start": "2017-09-12T08:35:14.600Z",
+					"end": "2017-09-12T08:35:14.600Z",
+					"duration": 0,
+					"title": "\"after each\" hook",
+					"associatedSuite": "optfor",
+					"associatedTest": "should be equal to 'hello'"
+				},
+				{
+					"start": "2017-09-12T08:35:14.601Z",
+					"end": "2017-09-12T08:35:14.601Z",
+					"duration": 0,
+					"title": "\"before each\" hook",
+					"associatedSuite": "optfor",
+					"associatedTest": "should be equal to function hello( ){ return 'hello' }"
+				},
+				{
+					"start": "2017-09-12T08:35:14.668Z",
+					"end": "2017-09-12T08:35:14.668Z",
+					"duration": 0,
+					"title": "\"after each\" hook",
+					"associatedSuite": "optfor",
+					"associatedTest": "should be equal to function hello( ){ return 'hello' }"
+				},
+				{
+					"start": "2017-09-12T08:35:14.668Z",
+					"end": "2017-09-12T08:35:14.668Z",
+					"duration": 0,
+					"title": "\"after all\" hook",
+					"associatedSuite": "optfor"
+				}
+			]
+		},
+		{
+			"name": "`optfor( [ 1, 2, 3 ], 2, true )`",
+			"duration": 144,
+			"start": "2017-09-12T08:35:14.146Z",
+			"end": "2017-09-12T08:35:14.290Z",
+			"tests": [
+				{
+					"name": "should be equal to 2",
+					"start": "2017-09-12T08:35:14.147Z",
+					"end": "2017-09-12T08:35:14.288Z",
+					"duration": 141,
+					"state": "pass"
+				}
+			],
+			"hooks": []
+		},
+		{
+			"name": "`optfor( [ 1, 2, 3, 'hello' ], 'hello' )`",
+			"duration": 72,
+			"start": "2017-09-12T08:35:14.290Z",
+			"end": "2017-09-12T08:35:14.362Z",
+			"tests": [
+				{
+					"name": "should be equal to 'hello'",
+					"start": "2017-09-12T08:35:14.290Z",
+					"end": "2017-09-12T08:35:14.362Z",
+					"duration": 72,
+					"state": "pass"
+				}
+			],
+			"hooks": []
+		},
+		{
+			"name": "`optfor( [ 1, 2, 3, true ], true )",
+			"duration": 52,
+			"start": "2017-09-12T08:35:14.362Z",
+			"end": "2017-09-12T08:35:14.414Z",
+			"tests": [
+				{
+					"name": "should be equal to true",
+					"start": "2017-09-12T08:35:14.362Z",
+					"end": "2017-09-12T08:35:14.413Z",
+					"duration": 51,
+					"state": "pass"
+				}
+			],
+			"hooks": []
+		},
+		{
+			"name": "`optfor( [ 1, 2, 3, Symbol.for( 'hello' ) ] , SYMBOL )`",
+			"duration": 56,
+			"start": "2017-09-12T08:35:14.414Z",
+			"end": "2017-09-12T08:35:14.470Z",
+			"tests": [
+				{
+					"name": "should be equal to Symbol.for( 'hello' )",
+					"start": "2017-09-12T08:35:14.414Z",
+					"end": "2017-09-12T08:35:14.469Z",
+					"duration": 55,
+					"state": "pass"
+				}
+			],
+			"hooks": []
+		},
+		{
+			"name": "`optfor( [ 1, 2, 3, /eah/ ], RegExp )`",
+			"duration": 66,
+			"start": "2017-09-12T08:35:14.470Z",
+			"end": "2017-09-12T08:35:14.536Z",
+			"tests": [
+				{
+					"name": "should be equal to /eah/",
+					"start": "2017-09-12T08:35:14.470Z",
+					"end": "2017-09-12T08:35:14.536Z",
+					"duration": 66,
+					"state": "pass"
+				}
+			],
+			"hooks": []
+		},
+		{
+			"name": "`optfor( [ 1, 2, 3, 'hello' ], STRING )`",
+			"duration": 63,
+			"start": "2017-09-12T08:35:14.537Z",
+			"end": "2017-09-12T08:35:14.600Z",
+			"tests": [
+				{
+					"name": "should be equal to 'hello'",
+					"start": "2017-09-12T08:35:14.537Z",
+					"end": "2017-09-12T08:35:14.600Z",
+					"duration": 63,
+					"state": "pass"
+				}
+			],
+			"hooks": []
+		},
+		{
+			"name": "`optfor( [ null, Symbol.for( 'hi' ), function hello( ){ return 'hello' } ], FUNCTION )`",
+			"duration": 67,
+			"start": "2017-09-12T08:35:14.601Z",
+			"end": "2017-09-12T08:35:14.668Z",
+			"tests": [
+				{
+					"name": "should be equal to function hello( ){ return 'hello' }",
+					"start": "2017-09-12T08:35:14.601Z",
+					"end": "2017-09-12T08:35:14.668Z",
+					"duration": 67,
+					"state": "pass"
+				}
+			],
+			"hooks": []
+		}
+	]
+}

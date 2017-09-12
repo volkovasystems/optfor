@@ -51,7 +51,7 @@
 	@end-include
 */
 
-const assert = require( "should" );
+const assert = require( "should/as-function" );
 
 //: @server:
 const optfor = require( "./optfor.js" );
@@ -63,11 +63,53 @@ const optfor = require( "./optfor.js" );
 
 
 //: @server:
-
 describe( "optfor", ( ) => {
 
-} );
+	describe( "`optfor( [ 1, 2, 3 ], 2, true )`", ( ) => {
+		it( "should be equal to 2", ( ) => {
+			assert.equal( optfor( [ 1, 2, 3 ], 2, true ), 2 );
+		} );
+	} );
 
+	describe( "`optfor( [ 1, 2, 3, 'hello' ], 'hello' )`", ( ) => {
+		it( "should be equal to 'hello'", ( ) => {
+			assert.equal( optfor( [ 1, 2, 3, "hello" ], "hello" ), "hello" );
+		} );
+	} );
+
+	describe( "`optfor( [ 1, 2, 3, true ], true )", ( ) => {
+		it( "should be equal to true", ( ) => {
+			assert.equal( optfor( [ 1, 2, 3, true ], true ), true );
+		} );
+	} );
+
+	describe( "`optfor( [ 1, 2, 3, Symbol.for( 'hello' ) ] , SYMBOL )`", ( ) => {
+		it( "should be equal to Symbol.for( 'hello' )", ( ) => {
+			assert.equal( optfor( [ 1, 2, 3, Symbol.for( "hello" ) ] , SYMBOL ), Symbol.for( "hello" ) );
+		} );
+	} );
+
+	describe( "`optfor( [ 1, 2, 3, /eah/ ], RegExp )`", ( ) => {
+		it( "should be equal to /eah/", ( ) => {
+			assert.deepEqual( optfor( [ 1, 2, 3, /eah/ ], RegExp ), /eah/ );
+		} );
+	} );
+
+	describe( "`optfor( [ 1, 2, 3, 'hello' ], STRING )`", ( ) => {
+		it( "should be equal to 'hello'", ( ) => {
+			assert.equal( optfor( [ 1, 2, 3, "hello" ], STRING ), "hello" );
+		} );
+	} );
+
+	describe( "`optfor( [ null, Symbol.for( 'hi' ), function hello( ){ return 'hello' } ], FUNCTION )`", ( ) => {
+		it( "should be equal to function hello( ){ return 'hello' }", ( ) => {
+			let test = function hello( ){ return "hello" };
+
+			assert.deepEqual( optfor( [ null, Symbol.for( "hi" ), test ], FUNCTION ), test );
+		} );
+	} );
+
+} );
 //: @end-server
 
 

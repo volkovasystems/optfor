@@ -23,5 +23,10 @@
 		"bower_components",
 		"test",
 		"tests"
-	]
+	],
+	"dependencies": {
+		"doubt": "^0.34.0",
+		"optall": "^0.28.0",
+		"zelf": "^0.14.0"
+	}
 }
