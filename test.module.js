@@ -51,7 +51,7 @@
 	@end-include
 */
 
-const assert = require( "should" );
+const assert = require( "should/as-function" );
 
 //: @server:
 const optfor = require( "./optfor.js" );
@@ -67,27 +67,217 @@ const path = require( "path" );
 
 
 //: @server:
-
 describe( "optfor", ( ) => {
 
-} );
+	describe( "`optfor( [ 1, 2, 3 ], 2, true )`", ( ) => {
+		it( "should be equal to 2", ( ) => {
+			assert.equal( optfor( [ 1, 2, 3 ], 2, true ), 2 );
+		} );
+	} );
 
+	describe( "`optfor( [ 1, 2, 3, 'hello' ], 'hello' )`", ( ) => {
+		it( "should be equal to 'hello'", ( ) => {
+			assert.equal( optfor( [ 1, 2, 3, "hello" ], "hello" ), "hello" );
+		} );
+	} );
+
+	describe( "`optfor( [ 1, 2, 3, true ], true )", ( ) => {
+		it( "should be equal to true", ( ) => {
+			assert.equal( optfor( [ 1, 2, 3, true ], true ), true );
+		} );
+	} );
+
+	describe( "`optfor( [ 1, 2, 3, Symbol.for( 'hello' ) ] , SYMBOL )`", ( ) => {
+		it( "should be equal to Symbol.for( 'hello' )", ( ) => {
+			assert.equal( optfor( [ 1, 2, 3, Symbol.for( "hello" ) ] , SYMBOL ), Symbol.for( "hello" ) );
+		} );
+	} );
+
+	describe( "`optfor( [ 1, 2, 3, /eah/ ], RegExp )`", ( ) => {
+		it( "should be equal to /eah/", ( ) => {
+			assert.deepEqual( optfor( [ 1, 2, 3, /eah/ ], RegExp ), /eah/ );
+		} );
+	} );
+
+	describe( "`optfor( [ 1, 2, 3, 'hello' ], STRING )`", ( ) => {
+		it( "should be equal to 'hello'", ( ) => {
+			assert.equal( optfor( [ 1, 2, 3, "hello" ], STRING ), "hello" );
+		} );
+	} );
+
+	describe( "`optfor( [ null, Symbol.for( 'hi' ), function hello( ){ return 'hello' } ], FUNCTION )`", ( ) => {
+		it( "should be equal to function hello( ){ return 'hello' }", ( ) => {
+			let test = function hello( ){ return "hello" };
+
+			assert.deepEqual( optfor( [ null, Symbol.for( "hi" ), test ], FUNCTION ), test );
+		} );
+	} );
+
+} );
 //: @end-server
 
 
 //: @client:
-
 describe( "optfor", ( ) => {
 
-} );
+	describe( "`optfor( [ 1, 2, 3 ], 2, true )`", ( ) => {
+		it( "should be equal to 2", ( ) => {
+			assert.equal( optfor( [ 1, 2, 3 ], 2, true ), 2 );
+		} );
+	} );
 
+	describe( "`optfor( [ 1, 2, 3, 'hello' ], 'hello' )`", ( ) => {
+		it( "should be equal to 'hello'", ( ) => {
+			assert.equal( optfor( [ 1, 2, 3, "hello" ], "hello" ), "hello" );
+		} );
+	} );
+
+	describe( "`optfor( [ 1, 2, 3, true ], true )", ( ) => {
+		it( "should be equal to true", ( ) => {
+			assert.equal( optfor( [ 1, 2, 3, true ], true ), true );
+		} );
+	} );
+
+	describe( "`optfor( [ 1, 2, 3, Symbol.for( 'hello' ) ] , SYMBOL )`", ( ) => {
+		it( "should be equal to Symbol.for( 'hello' )", ( ) => {
+			assert.equal( optfor( [ 1, 2, 3, Symbol.for( "hello" ) ] , SYMBOL ), Symbol.for( "hello" ) );
+		} );
+	} );
+
+	describe( "`optfor( [ 1, 2, 3, /eah/ ], RegExp )`", ( ) => {
+		it( "should be equal to /eah/", ( ) => {
+			assert.deepEqual( optfor( [ 1, 2, 3, /eah/ ], RegExp ), /eah/ );
+		} );
+	} );
+
+	describe( "`optfor( [ 1, 2, 3, 'hello' ], STRING )`", ( ) => {
+		it( "should be equal to 'hello'", ( ) => {
+			assert.equal( optfor( [ 1, 2, 3, "hello" ], STRING ), "hello" );
+		} );
+	} );
+
+	describe( "`optfor( [ null, Symbol.for( 'hi' ), function hello( ){ return 'hello' } ], FUNCTION )`", ( ) => {
+		it( "should be equal to function hello( ){ return 'hello' }", ( ) => {
+			let test = function hello( ){ return "hello" };
+
+			assert.deepEqual( optfor( [ null, Symbol.for( "hi" ), test ], FUNCTION ), test );
+		} );
+	} );
+
+} );
 //: @end-client
 
 
 //: @bridge:
-
 describe( "optfor", ( ) => {
 
-} );
+	let bridgeURL = `file://${ path.resolve( __dirname, "bridge.html" ) }`;
 
+	describe( "`optfor( [ 1, 2, 3 ], 2, true )`", ( ) => {
+		it( "should be equal to 2", ( ) => {
+			let result = browser.url( bridgeURL ).execute(
+
+				function( ){
+					return optfor( [ 1, 2, 3 ], 2, true );
+				}
+
+			).value;
+
+			assert.equal( result, 2 );
+		} );
+	} );
+
+	describe( "`optfor( [ 1, 2, 3, 'hello' ], 'hello' )`", ( ) => {
+		it( "should be equal to 'hello'", ( ) => {
+			let result = browser.url( bridgeURL ).execute(
+
+				function( ){
+					return optfor( [ 1, 2, 3, "hello" ], "hello" );
+				}
+
+			).value;
+
+			assert.equal( result, "hello" );
+		} );
+	} );
+
+	describe( "`optfor( [ 1, 2, 3, true ], true )", ( ) => {
+		it( "should be equal to true", ( ) => {
+			let result = browser.url( bridgeURL ).execute(
+
+				function( ){
+					return optfor( [ 1, 2, 3, true ], true );
+				}
+
+			).value;
+
+			assert.equal( result, true );
+		} );
+	} );
+
+	describe( "`optfor( [ 1, 2, 3, Symbol.for( 'hello' ) ] , SYMBOL )`", ( ) => {
+		it( "should be equal to Symbol.for( 'hello' )", ( ) => {
+			//: @ignore:
+			let result = browser.url( bridgeURL ).execute(
+
+				function( ){
+					return optfor( [ 1, 2, 3, Symbol.for( "hello" ) ] , SYMBOL ).toString( );
+				}
+
+			).value;
+			//: @end-ignore
+
+			assert.equal( result, "Symbol(hello)" );
+		} );
+	} );
+
+	describe( "`optfor( [ 1, 2, 3, /eah/ ], RegExp )`", ( ) => {
+		it( "should be equal to /eah/", ( ) => {
+			//: @ignore:
+			let result = browser.url( bridgeURL ).execute(
+
+				function( ){
+					return optfor( [ 1, 2, 3, /eah/ ], RegExp ) instanceof RegExp == true;
+				}
+
+			).value;
+			//: @end-ignore
+
+			assert.equal( result, true );
+		} );
+	} );
+
+	describe( "`optfor( [ 1, 2, 3, 'hello' ], STRING )`", ( ) => {
+		it( "should be equal to 'hello'", ( ) => {
+			let result = browser.url( bridgeURL ).execute(
+
+				function( ){
+					return optfor( [ 1, 2, 3, "hello" ], STRING );
+				}
+
+			).value;
+
+			assert.equal( result, "hello" );
+		} );
+	} );
+
+	describe( "`optfor( [ null, Symbol.for( 'hi' ), function hello( ){ return 'hello' } ], FUNCTION )`", ( ) => {
+		it( "should be equal to function hello( ){ return 'hello' }", ( ) => {
+			//: @ignore:
+			let result = browser.url( bridgeURL ).execute(
+
+				function( ){
+					let test = function hello( ){ return "hello" };
+
+					return optfor( [ null, Symbol.for( "hi" ), test ], FUNCTION ) === test;
+				}
+
+			).value;
+			//: @end-ignore
+
+			assert.equal( result, true );
+		} );
+	} );
+
+} );
 //: @end-bridge
